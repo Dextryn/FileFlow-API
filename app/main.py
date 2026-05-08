@@ -1,5 +1,9 @@
-from fastapi import FastAPI
+import os
+import shutil
+from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
+
+from FileFlowAPI.app.routers import health, upload
 
 app = FastAPI(title="FileFlowAPI")
 
@@ -16,11 +20,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/")
-def read_root():
-    return {"message": "FileFlowAPI is running!"}
-
-@app.post("/upload")
-async def upload_file():
-    return {"status": "upload endpoint working"}
+app.include_router(health.router)
+app.include_router(upload.router)
 
