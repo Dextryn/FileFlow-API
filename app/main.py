@@ -2,8 +2,7 @@ import os
 import shutil
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
-
-from FileFlowAPI.app.routers import health, upload
+from FileFlowAPI.app.routers import health, files
 
 app = FastAPI(title="FileFlowAPI")
 
@@ -21,5 +20,4 @@ app.add_middleware(
 )
 
 app.include_router(health.router)
-app.include_router(upload.router)
-
+app.include_router(files.router)
