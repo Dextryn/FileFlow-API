@@ -1,8 +1,6 @@
-import os
-import shutil
-from fastapi import FastAPI, UploadFile, File
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from FileFlowAPI.app.routers import health, files
+from FileFlowAPI.app.routes import health, files
 
 app = FastAPI(title="FileFlowAPI")
 
